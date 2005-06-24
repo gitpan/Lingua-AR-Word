@@ -6,21 +6,25 @@ use warnings;
 use utf8;
 
 use Lingua::AR::Word::Stem;	#needed to find the stem
-use Lingua::AR::Db;		#needed to get the translation
+use Lingua::AR::Word::Encode;	#needed to find the stem
 use Switch;
 
 
 our @ISA = qw();
 
-our $VERSION = '1.4';
+our $VERSION = '1.5';
 
 
 sub new{
 
-	my $this={};
-	$this->{WORD}=$_[1];
+	my $this={
+		WORD=>$_[1],
+		STEM=>"",
+		TRANSLATION=>"",
+		ARABTEX=>""
+	};
+
 	$this->{STEM}=&stem($this->{WORD});
-	$this->{TRANSLATION}="";
 	$this->{ARABTEX}=&encode($this->{WORD});
 
 	bless($this);
@@ -49,14 +53,6 @@ return "ARABTEX: $this->{ARABTEX}\n";
 
 }
 
-sub get_translation{
-
-	my $this=shift;
-	$this->{TRANSLATION}=Lingua::AR::Db::translate($this->{WORD},$_[0]);
-return "TRANSLATION: $this->{TRANSLATION}\n";
-
-}
-
 
 
 
@@ -70,6 +66,8 @@ Lingua::AR::Word - Perl extension for getting the stem and the translation of Ar
 =head1 SYNOPSIS
 
 use utf8;
+use Lingua::AR::Word;
+
 
 my $word=Lingua::AR::Word->new(ARABIC_WORD_IN_UTF8);
 
@@ -81,8 +79,6 @@ print FOUTPUT $word->get_word();
 print FOUTPUT $word->get_stem();
 print FOUTPUT $word->get_arabtex();
 
-my $db=Lingua::AR::Db->new("./dicts","en");
-print FOUTPUT $word->get_translation($db);
 
 close FOUTPUT;
 
