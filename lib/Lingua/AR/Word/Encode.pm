@@ -114,9 +114,9 @@ Lingua::AR::Word::Encode - Perl extension for encoding Arabic words into ArabTeX
 
 =head1 SYNOPSIS
 
-  use Lingua::AR::Word::Encoding;
+  use Lingua::AR::Word::Encode;
 
-$translitteration=Lingua::AR::Word::encode(ARABIC_WORD_IN_UTF8);
+$arabtex_form=Lingua::AR::Word::encode(ARABIC_WORD_IN_UTF8);
 
 =head1 DESCRIPTION
 

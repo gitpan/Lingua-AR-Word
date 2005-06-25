@@ -1,5 +1,11 @@
 			<< Lingua::AR::Word - Andrea Benazzo >>
 
+5/06/2005	1.51
+->added tests
+
+24/06/2005	1.5
+->modified some little parts in Lingua::AR::Word
+
 23/06/2005
 ->moved the modules under Lingua::AR:: namespace
 

@@ -12,7 +12,7 @@ use Switch;
 
 our @ISA = qw();
 
-our $VERSION = '1.5';
+our $VERSION = '1.51';
 
 
 sub new{
