@@ -125,7 +125,7 @@ This module will take care of encoding an Arabic word into ArabTeX, so that Arab
 
 =head1 SEE ALSO
 
-I've used ArabTeX "encoding" for local DB files, so that the shell won't argue with the filenames. You may find more info about that at ftp://ftp.informatik.uni-stuttgart.de/pub/arabtex/arabtex.htm
+I've used ArabTeX "encoding" for local Lingua::AR::DB files, so that the shell won't argue with the filenames. You may find more info about that at ftp://ftp.informatik.uni-stuttgart.de/pub/arabtex/arabtex.htm
 
 
 

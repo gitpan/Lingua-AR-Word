@@ -1,55 +1,48 @@
 package Lingua::AR::Word;
 
-use 5.008006;
 use strict;
 use warnings;
 use utf8;
-
-use Lingua::AR::Word::Stem;	#needed to find the stem
-use Lingua::AR::Word::Encode;	#needed to find the stem
 use Switch;
 
 
-our @ISA = qw();
+use Lingua::AR::Word::Stem;	#needed to find the stem
+use Lingua::AR::Word::Encode;	#needed to encode into ArabTeX
 
-our $VERSION = '1.51';
+
+our $VERSION = '1.5.2';
 
 
 sub new{
 
+	my $class=$_[0];
+
 	my $this={
-		WORD=>$_[1],
-		STEM=>"",
-		TRANSLATION=>"",
-		ARABTEX=>""
+		_word=>$_[1],
+		_stem=>"",
+		_translation=>"",
+		_arabtex=>""
 	};
 
-	$this->{STEM}=&stem($this->{WORD});
-	$this->{ARABTEX}=&encode($this->{WORD});
+	$this->{_stem}=&stem($this->{_word});
+	$this->{_arabtex}=&encode($this->{_word});
 
-	bless($this);
-return $this;
+	bless($this,$class);
 }
 
 
 
 sub get_word{
-
-	my $this=shift;
-return "WORD: $this->{WORD}\n";
+	"WORD: $_[0]->{_word}\n";
 }
 
 sub get_stem{
-
-	my $this=shift;
-return "STEM: $this->{STEM}\n";
+	"STEM: $_[0]->{_stem}\n";
 
 }
 
 sub get_arabtex{
-
-	my $this=shift;
-return "ARABTEX: $this->{ARABTEX}\n";
+	"ARABTEX: $_[0]->{_arabtex}\n";
 
 }
 
@@ -61,7 +54,7 @@ __END__
 
 =head1 NAME
 
-Lingua::AR::Word - Perl extension for getting the stem and the translation of Arabic words
+Lingua::AR::Word - Perl extension for getting the stem and ArabTeX encoding of Arabic words
 
 =head1 SYNOPSIS
 
@@ -85,13 +78,13 @@ close FOUTPUT;
 
 =head1 DESCRIPTION
 
-In order to work on an Arabic word, you need to create the object Dict::Word, passing the Arabic word encoded in utf8 to the constructor.
+In order to work on an Arabic word, you need to create the object Lingua::AR::Word, passing the Arabic word encoded in utf8 to the constructor.
 You will then be able to get the stem through get_stem().
 You will get the ArabTeX translittered form through get_arabtex().
-If you also want the translation, you'll need to create the $db object (described in the Dict::Db module), so that it may look for its meaning in the correct Database.
+If you also want the translation, you'll need to create the $db object (described in the Lingua::AR::Db module), so that it may look for its meaning in the correct Database.
 
 Remember that input-output directly to shell will not be useful as long as your shell doesn't support utf8 encoded characters.
-That's because I piped the output to another file, forcing its writing in utf8.
+In the example above, for example, I piped the output to another file AND I forced its writing in utf8.
 
 
 

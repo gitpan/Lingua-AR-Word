@@ -16,10 +16,8 @@ sub stem{
  		$word=$2;
        }
 
-       #let's strip down all other unnecessary letters
-       my $length=length($word);
-
-       switch($length){
+       #let's strip down all other unnecessary letters according to the length of the word
+       switch(length($word)){
 			case 3	{
 				$stem=$word;
 			}
