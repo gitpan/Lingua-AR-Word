@@ -8,10 +8,38 @@ use Switch;
 sub stem{
 
 	my $stem;
-	my $word=$_[0];
+	my $word=shift;
 	
 	#let's strip down every prefix and suffix I'm aware of
-	if($word=~/^([وفب]*ال|[بيلمتوسن]*ت|[بلوكف]*م|[ال]*ل|[ولسف]*ي|[وفلب]*ا|)(.*?)(ات|وا|تا|ون|وه|ان|تي|ته|تم|كم|ه[نم]*|ها|ية|تك|نا|ي[نه]*|[ةهيا]|)$/)
+	if($word=~/^(	#the prefixes
+		[وفب]*ال|
+		[بيلمتوسن]*ت|
+		[بلوكف]*م|
+		[ال]*ل|[
+		ولسف]*ي|[
+		وفلب]*ا|
+		)
+		(.*?)	# the stem
+		(	# the suffixes
+		ات|
+		وا|
+		تا|
+		ون|
+		وه|
+		ان|
+		تي|
+		ته|
+		تم|
+		كم|
+		ه[نم]*|
+		ها|
+		ية|
+		تك|
+		نا|
+		ي[نه]*|
+		[ةهيا]|
+		)
+		$/x)
 	{
  		$word=$2;
        }
@@ -39,7 +67,7 @@ return $stem;
 }
 
 sub four{
-	my $word=$_[0];
+	my $word=shift;
 	
 	if($word=~/(.)(.)(ا|ي|و)(.)/){
 		$word=$1.$2.$4;
@@ -53,7 +81,7 @@ sub four{
 }
 
 sub five{
-	my $word=$_[0];
+	my $word=shift;
 	
 	if($word=~/(.)(.)(ا)(ا)(.)/){
 		$word=$1.$2.$5;
@@ -81,7 +109,7 @@ sub five{
 }
 
 sub six{
-	my $word=$_[0];
+	my $word=shift;
 	
 	if($word=~/(.)(و)(ا)(.)(ي)(.)/){
 		$word=$1.$4.$6;
@@ -119,7 +147,7 @@ Andrea Benazzo, E<lt>andy@slacky.itE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (c) 2005 Andrea Benazzo. All rights reserved.
+Copyright (c) 2006 Andrea Benazzo. All rights reserved.
  This program is free software; you can redistribute it and/or
  modify it under the same terms as Perl itself.
 

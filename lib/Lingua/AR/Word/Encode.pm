@@ -5,7 +5,7 @@ use utf8;
 
 
 sub encode{
-	my $word=$_[0];
+	my $word=shift;
 
 	#let's take away the FIRST hamza ON/UNDER the alef from the word
 	$word=~s/\x{0623}//; #HAMZA ON ALEF
@@ -135,7 +135,7 @@ Andrea Benazzo, E<lt>andy@slacky.itE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (c) 2005 Andrea Benazzo. All rights reserved.
+Copyright (c) 2006 Andrea Benazzo. All rights reserved.
  This program is free software; you can redistribute it and/or
  modify it under the same terms as Perl itself.
 

@@ -1,5 +1,9 @@
 			<< Lingua::AR::Word - Andrea Benazzo >>
 
+9/4/2006	1.5.3
+->better documentation
+->improved readability in the stemming regex
+
 18/09/2005	1.5.2
 ->little fixes here and there (including documentation)
 
