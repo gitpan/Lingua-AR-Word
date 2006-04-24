@@ -1,5 +1,9 @@
 			<< Lingua::AR::Word - Andrea Benazzo >>
 
+23/4/2006	1.5.4
+->corrected some errors in the documentation
+->added todo notice in the stem sub-module
+
 9/4/2006	1.5.3
 ->better documentation
 ->improved readability in the stemming regex
