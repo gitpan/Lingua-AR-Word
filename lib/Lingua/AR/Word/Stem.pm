@@ -7,11 +7,12 @@ use Switch;
 
 sub stem{
 
-	my $stem;
-	my $word=shift;
-	
-	#let's strip down every prefix and suffix I'm aware of.
-	#(actually suffixes relative to people like possessive adjs are NOT chopped)
+  my $stem;
+  my $word=shift;
+
+
+  #let's strip down every prefix and suffix I'm aware of.
+  #(actually suffixes relative to people like possessive adjs are NOT chopped)
 
 	if($word=~/^(	#the prefixes
 		[وفب]*ال|
@@ -48,9 +49,9 @@ sub stem{
 
        #let's strip down all other unnecessary letters according to the length of the word
        switch(length($word)){
-			case 3	{
-				$stem=$word;
-			}
+            case 3	{
+                $stem=$word;
+            }
 			case 4	{
 				$stem=&four($word);
 			}
@@ -130,24 +131,18 @@ __END__
 
 =head1 NAME
 
-Lingua::AR::Word::Stem - Perl extension for finding the stem of a given Arabic word
+Lingua::AR::Word::Stem - Perl extension to find the stem of a given Arabic word
 
 =head1 SYNOPSIS
 
-  use Lingua::AR::Word::Stem;
+	use Lingua::AR::Word::Stem;
 
-$stem=Lingua::AR::Word::stem(ARABIC_WORD_IN_UTF8);
+	$stem=Lingua::AR::Word::stem("ARABIC_WORD_IN_UTF8");
 
 =head1 DESCRIPTION
 
 This module will take care of finding the stem of an Arabic word, through chopping the prefixes and suffixes of the word and by taking away unnecessary letters in the middle of the word.
 
-
-=head1 TODO
-
-Actually suffixes relative to people like possessive adjs are NOT chopped.
-I need to think of a way to chop them AND let the user know they were recognized.
-This way the user is helped in his translation work.
 
 =head1 AUTHOR
 

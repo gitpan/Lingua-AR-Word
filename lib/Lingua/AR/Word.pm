@@ -10,38 +10,37 @@ use Lingua::AR::Word::Stem;	#needed to find the stem
 use Lingua::AR::Word::Encode;	#needed to encode into ArabTeX
 
 
-our $VERSION = '1.5.4';
+our $VERSION = '1.5.5';
 
 
 sub new{
 
-	my $class=shift;
+    my $class=shift;
 
-	my $this={
-		_word=>shift,
-		_stem=>"",
-		_translation=>"",
-		_arabtex=>""
-	};
+    my $this={
+        _word=>shift,
+        _stem=>"",
+        _arabtex=>""
+    };
 
-	$this->{_stem}=&stem($this->{_word});
-	$this->{_arabtex}=&encode($this->{_word});
+    $this->{_stem}=&stem($this->{_word});
+    $this->{_arabtex}=&encode($this->{_word});
 
-	bless($this,$class);
+    bless($this,$class);
 }
 
 
 
 sub get_word{
-	$_[0]->{_word};
+    $_[0]->{_word};
 }
 
 sub get_stem{
-	$_[0]->{_stem};
+    $_[0]->{_stem};
 }
 
 sub get_arabtex{
-	$_[0]->{_arabtex};
+    $_[0]->{_arabtex};
 }
 
 
@@ -51,7 +50,7 @@ __END__
 
 =head1 NAME
 
-Lingua::AR::Word - Perl extension for getting the stem and ArabTeX encoding of Arabic words
+Lingua::AR::Word - Perl extension to get the stem and ArabTeX encoding of Arabic words
 
 =head1 SYNOPSIS
 
@@ -87,6 +86,15 @@ If you also want the translation, check out the Lingua::AR::Db module.
 You may find more info about ArabTeX encoding at ftp://ftp.informatik.uni-stuttgart.de/pub/arabtex/arabtex.htm
 
 
+=head1 TODO
+
+=over
+
+=item Add function which returns the Arabic form of a translitterated word.
+
+=item Add function which analyzes the arabic word and returns info about it: gender, {gender,number} of person/people it refers to,..
+
+=back
 
 =head1 AUTHOR
 

@@ -5,13 +5,14 @@ use utf8;
 
 
 sub encode{
+
 	my $word=shift;
 
-	#let's take away the FIRST hamza ON/UNDER the alef from the word
+	# let's take away the FIRST hamza ON/UNDER the alef from the word
 	$word=~s/\x{0623}//; #HAMZA ON ALEF
 	$word=~s/\x{0625}//; #HAMZA UNDER ALEF
 
-	#let's take away the double-letters (=letter+shadda)
+	# let's take away the double-letters (=letter+shadda)
 	$word=~s/\x{0628}\x{0651}/bb/g;
 	$word=~s/\x{062A}\x{0651}/tt/g;
 	$word=~s/\x{062B}\x{0651}/_t_t/g;
@@ -40,6 +41,7 @@ sub encode{
 	$word=~s/\x{064A}\x{0651}/yy/g;
 	$word=~s/\x{0631}\x{0651}/rr/g;
 
+    # now let's think of single letters
 	$word=~s/\x{0627}/A/g; #ALEF;
 	$word=~s/\x{062A}/t/g; #TEH;
 	$word=~s/\x{0643}/k/g; #KAF
@@ -110,22 +112,22 @@ __END__
 
 =head1 NAME
 
-Lingua::AR::Word::Encode - Perl extension for encoding Arabic words into ArabTeX
+Lingua::AR::Word::Encode - Perl extension to encode Arabic words into ArabTeX
 
 =head1 SYNOPSIS
 
-  use Lingua::AR::Word::Encode;
+	use Lingua::AR::Word::Encode;
 
-$arabtex_form=Lingua::AR::Word::encode(ARABIC_WORD_IN_UTF8);
+	$arabtex_form=Lingua::AR::Word::encode("ARABIC_WORD_IN_UTF8");
 
 =head1 DESCRIPTION
 
-This module will take care of encoding an Arabic word into ArabTeX, so that Arabic letters will be converted into English alphabet ones. This way we can interoperate with the ASCII-shell without any problems at all.
+This module will take care of encoding an Arabic word into ArabTeX, so that Arabic letters will be converted into English alphabet ones. This way we can interoperate with the ASCII-shell without requiring special Unicode-representation modules.
 
 
 =head1 SEE ALSO
 
-I've used ArabTeX "encoding" for local Lingua::AR::DB files, so that the shell won't argue with the filenames. You may find more info about that at ftp://ftp.informatik.uni-stuttgart.de/pub/arabtex/arabtex.htm
+You may find more info about ArabTeX encoding at ftp://ftp.informatik.uni-stuttgart.de/pub/arabtex/arabtex.htm
 
 
 
