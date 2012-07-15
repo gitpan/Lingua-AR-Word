@@ -3,6 +3,7 @@ package Lingua::AR::Word;
 use strict;
 use warnings;
 use utf8;
+use Switch;
 
 
 use Lingua::AR::Word::Stem;	#needed to find the stem

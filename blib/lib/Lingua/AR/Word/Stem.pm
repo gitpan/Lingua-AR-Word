@@ -2,6 +2,7 @@ package Lingua::AR::Word;
 
 use strict;
 use utf8;
+use Switch;
 
 
 sub stem{
@@ -47,28 +48,24 @@ sub stem{
        }
 
        #let's strip down all other unnecessary letters according to the length of the word
-       if(length($word)==3){
-           $stem=$word;
-       }
-       else{
-           if(length($word)==4){
-               $stem=&four($word);
-           }
-           else{
-               if(length($word)==5){
-                   $stem=&five($word);
-               }
-               else{
-                   if(length($word)==6){
-                       $stem=&six($word);
-                   }
-                   else{
-                       $stem="NotFound";
-                   }
-               }
-           }
-       }
+       switch(length($word)){
+            case 3	{
+                $stem=$word;
+            }
+			case 4	{
+				$stem=&four($word);
+			}
+			case 5	{
+				$stem=&five($word);
+			}
+			case 6	{
+				$stem=&six($word);
+			}
+			else	{
+				$stem="NotFound";
+			}
 
+       }
 return $stem;
 }
 
