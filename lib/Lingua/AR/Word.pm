@@ -9,7 +9,7 @@ use Lingua::AR::Word::Stem;	#needed to find the stem
 use Lingua::AR::Word::Encode;	#needed to encode into ArabTeX
 
 
-our $VERSION = '1.5.5';
+our $VERSION = '1.5.7';
 
 
 sub new{
